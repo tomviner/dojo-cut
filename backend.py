@@ -5,7 +5,7 @@ class Mode(enum.Enum):
     CHAR = 1
 
 
-def doCut(mode: Mode, delim: str, typing.List[int]) -> None:
+def doCut(mode: Mode, delim: str, fields: typing.List[int]) -> None:
     pass
 
 
