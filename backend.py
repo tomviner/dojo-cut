@@ -31,23 +31,6 @@ def doCut(f, mode: Mode, delim: str, fields: typing.Iterator[int]) -> None:
 
 
 
-#def yielder():
-#    yield 0
-#    n = 2
-#    while True:
-#        yield n
-#        n += 2
-
-#with open("test.csv", "r") as f:
-#    doCut(f, Mode.CHAR, None, yielder())
-
-
-#with open("test.csv", "r") as f:
-#    doCut(f, Mode.CHAR, None, [0, 2, 3])
-
-#with open("test.csv", "r") as f:
-#    doCut(f, Mode.DELIM, ",", [0, 2, 3])
-
 
 
     
