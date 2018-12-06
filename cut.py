@@ -26,7 +26,7 @@ def cut(input, d, f):
         else:
             fields.add(int(start))
     # print(sorted(fields))
-    doCut(Mode.DELIM, delim=d, fields=sorted(fields))
+    doCut(f=input, mode=Mode.DELIM, delim=d, fields=sorted(fields))
 
 
 if __name__ == '__main__':
