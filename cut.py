@@ -5,7 +5,9 @@ import click
 from backend import doCut, Mode
 
 
-def get_fields(ranges):
+def parse_fields(f):
+    ranges = f.split(',')
+
     spans = []
     for rng in ranges:
         start, dash, stop = rng.partition('-')
@@ -14,7 +16,6 @@ def get_fields(ranges):
         spans.append((start, dash, stop))
 
     for start, dash, stop in sorted(spans):
-        # print(start, dash, stop)
         if dash:
             if not stop:
                 yield from count(start)
@@ -29,18 +30,10 @@ def get_fields(ranges):
 @click.argument('input', type=click.File('r'))
 @click.option('-f')
 def cut(input, d, f):
-    # print(input, d)
-    # print(input.read())
-    ranges = f.split(',')
-    # fields = set()
-
-    # print(sorted(fields))
-    # for i, fld in enumerate(get_fields(ranges)):
-    #     if i > 10:
-    #         break
-    #     print(fld)
-
-    doCut(f=input, mode=Mode.DELIM, delim=d, fields=get_fields(ranges))
+    doCut(
+        f=input, mode=Mode.DELIM, delim=d,
+        fields=parse_fields(f)
+    )
 
 
 if __name__ == '__main__':
