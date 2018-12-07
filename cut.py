@@ -25,16 +25,20 @@ def parse_fields(f):
             yield start
 
 
+def _cut(input, d, f):
+    return list(doCut(
+        f=input, mode=Mode.DELIM, delim=d,
+        fields=parse_fields(f)
+    ))
+
+
 @click.command()
 @click.option('-d')
 @click.argument('input', type=click.File('r'))
 @click.option('-f')
 def cut(input, d, f):
-    doCut(
-        f=input, mode=Mode.DELIM, delim=d,
-        fields=parse_fields(f)
-    )
+    return _cut(input, d, f)
 
 
 if __name__ == '__main__':
-    cut()
+    list(cut())

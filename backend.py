@@ -38,6 +38,7 @@ def doCut(f, mode: Mode, delim: str, fields: typing.Iterator[int]) -> None:
         newline = delim.join(newfields)
 
         print(newline)
+        yield newline
 
 
 
